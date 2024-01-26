@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 
-from app.domain.games import Games, Game
+from app.domain.games import Games
+from app.domain.models.game import Game
 
 
 class GamesRouter:
