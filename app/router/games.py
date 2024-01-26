@@ -15,4 +15,8 @@ class GamesRouter:
         def create_game(game: Game):
             return self.__games.create_game(game)
 
+        @api_router.get('/')
+        def get_all():
+            return self.__games.get_all()
+
         return api_router
