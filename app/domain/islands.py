@@ -1,3 +1,4 @@
+from app.domain.models.island import Island
 from app.repository.islands import Islands as IslandsRepository
 
 
@@ -13,3 +14,6 @@ class Islands:
 
     def get_random(self):
         return self.__repository.get_random()
+
+    def create_island(self, island: Island):
+        return self.__repository.create_island(island.model_dump())

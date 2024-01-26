@@ -33,3 +33,13 @@ class Islands:
             print(e.response['Error']['Message'])
         except Exception as e:
             print(e)
+
+    def create_island(self, island: dict):
+        try:
+            table = self.__db.Table('Islands')
+            response = table.put_item(Item=island)
+            return response
+        except ClientError as e:
+            print(e.response['Error']['Message'])
+        except Exception as e:
+            print(e)

@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException
 
 from app.domain.islands import Islands
+from app.domain.models.island import Island
 
 
 class IslandsRouter:
@@ -15,8 +16,12 @@ class IslandsRouter:
         def get_all():
             return self.__islands.get_all()
 
+        @api_router.post('/')
+        def create_island(island: Island):
+            return self.__islands.create_island(island)
+
         @api_router.get('/{seed}')
-        def get_game(seed: int):
+        def get_island(seed: int):
             try:
                 return self.__islands.get_island(seed)
             except KeyError:
