@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "evacubanana"
+version = "0.1.0"
+description = "Backend system for GGJ2024 game"
+authors = ["Ania Lesniak <anna.julia.lesniak@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.109.0"
+uvicorn = "^0.27.0"
+boto3 = "^1.34.29"
+python-dotenv = "^1.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
