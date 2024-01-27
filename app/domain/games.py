@@ -15,5 +15,4 @@ class Games:
         return self.__repository.get_game(uid)
 
     def create_game(self, game: Game):
-        game.uid = str(uuid4())
         return self.__repository.create_game(game.model_dump())

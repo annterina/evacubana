@@ -6,6 +6,9 @@ MAX_ISLAND_NOTES = 80
 
 def update_island_from_game(islands: Islands, game: Game):
     island = islands.get_island(game.island_seed)
+    if not island:
+        print(f'Island {game.island_seed} not found')
+        return
 
     island['top_scores'].append({'user': game.username, 'score': game.score})
     island['top_scores'] = sorted(island['top_scores'], key=lambda user_score: user_score['score'], reverse=True)[:3]

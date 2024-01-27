@@ -15,7 +15,7 @@ class Islands:
         except ClientError as e:
             print(e.response['Error']['Message'])
         except Exception as e:
-            print(e)
+            print(f'Error getting islands, {e}')
 
     def get_seeds(self):
         try:
@@ -26,7 +26,7 @@ class Islands:
         except ClientError as e:
             print(e.response['Error']['Message'])
         except Exception as e:
-            print(e)
+            print(f'Error getting seeds, {e}')
 
     def get_island(self, seed: int):
         try:
@@ -36,7 +36,7 @@ class Islands:
         except ClientError as e:
             print(e.response['Error']['Message'])
         except Exception as e:
-            print(e)
+            print(f'Error getting island, {e}')
 
     def create_island(self, island: dict):
         try:
@@ -46,7 +46,7 @@ class Islands:
         except ClientError as e:
             print(e.response['Error']['Message'])
         except Exception as e:
-            print(e)
+            print(f'Error creating island, {e}')
 
     def update_island(self, island: dict):
         table = self.__db.Table('Islands')
