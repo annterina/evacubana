@@ -1,5 +1,4 @@
 import random
-import sys
 
 from pydantic import Field, PrivateAttr
 from pydantic import BaseModel
