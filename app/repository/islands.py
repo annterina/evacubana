@@ -17,6 +17,16 @@ class Islands:
         except Exception as e:
             print(f'Error getting islands, {e}')
 
+    def get_all_playable(self):
+        try:
+            table = self.__db.Table('Islands')
+            response = table.scan(FilterExpression=Attr('playable').eq(True))
+            return response['Items']
+        except ClientError as e:
+            print(e.response['Error']['Message'])
+        except Exception as e:
+            print(f'Error getting islands, {e}')
+
     def get_seeds(self):
         try:
             table = self.__db.Table('Islands')

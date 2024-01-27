@@ -9,6 +9,9 @@ class Islands:
     def get_all(self):
         return self.__repository.get_all()
 
+    def get_all_playable(self):
+        return self.__repository.get_all_playable()
+
     def get_seeds(self):
         seeds = self.__repository.get_seeds() or []
         return [int(seed['seed']) for seed in seeds]
