@@ -17,3 +17,6 @@ class Islands:
 
     def create_island(self, island: Island):
         return self.__repository.create_island(island.model_dump())
+
+    def update_island(self, island: Island):
+        return self.__repository.update_island(island.model_dump())

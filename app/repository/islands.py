@@ -1,6 +1,8 @@
 from botocore.exceptions import ClientError
 from boto3.resources.base import ServiceResource
 
+from app.domain.models.island import Island
+
 
 class Islands:
     def __init__(self, db: ServiceResource) -> None:
@@ -43,3 +45,20 @@ class Islands:
             print(e.response['Error']['Message'])
         except Exception as e:
             print(e)
+
+    def update_island(self, island: dict):
+        table = self.__db.Table('Islands')
+        response = table.update_item(
+            Key={'seed': island.get('seed')},
+            UpdateExpression="""
+                set
+                    notes=:notes,
+                    top_scores=:top_scores
+            """,
+            ExpressionAttributeValues={
+                ':notes': island.get('notes'),
+                ':top_scores': island.get('top_scores')
+            },
+            ReturnValues="UPDATED_NEW"
+        )
+        return response

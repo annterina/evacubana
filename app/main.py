@@ -12,11 +12,12 @@ app = FastAPI()
 
 db = initialize_db()
 games_repository = GamesRepository(db)
-games = Games(games_repository)
-games_router = GamesRouter(games)
-
 islands_repository = IslandsRepository(db)
+
+games = Games(games_repository)
 islands = Islands(islands_repository)
+
+games_router = GamesRouter(games, islands_repository)
 islands_router = IslandsRouter(islands)
 
 

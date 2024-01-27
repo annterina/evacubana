@@ -20,15 +20,15 @@ class IslandsRouter:
         def create_island(island: Island):
             return self.__islands.create_island(island)
 
+        @api_router.get('/random')
+        def get_random():
+            return self.__islands.get_all()[0]
+
         @api_router.get('/{seed}')
         def get_island(seed: int):
             try:
                 return self.__islands.get_island(seed)
             except KeyError:
                 raise HTTPException(status_code=404, detail='Island not found')
-
-        @api_router.get('/random')
-        def get_random():
-            return self.__islands.get_random()
 
         return api_router

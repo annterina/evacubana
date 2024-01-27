@@ -4,5 +4,5 @@ from pydantic import BaseModel
 
 class Note(BaseModel):
     id: int = Field(..., example=101)
-    class_: str = Field(..., example='ObjectClass', alias='class')
+    object_class: str = Field(..., example='ObjectClass')
     text: str = Field(..., example='The sausage is poisonous!')
