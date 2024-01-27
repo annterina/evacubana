@@ -1,3 +1,5 @@
+import random
+
 from fastapi import APIRouter, HTTPException
 
 from app.domain.islands import Islands
@@ -22,7 +24,11 @@ class IslandsRouter:
 
         @api_router.get('/random')
         def get_random():
-            return self.__islands.get_all()[0]
+            seeds = self.__islands.get_seeds()
+            if not seeds:
+                raise HTTPException(status_code=404, detail='Island not found')
+            seed = random.choice(seeds)
+            return self.__islands.get_island(seed)
 
         @api_router.get('/{seed}')
         def get_island(seed: int):

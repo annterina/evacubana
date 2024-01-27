@@ -1,8 +1,6 @@
 from botocore.exceptions import ClientError
 from boto3.resources.base import ServiceResource
 
-from app.domain.models.island import Island
-
 
 class Islands:
     def __init__(self, db: ServiceResource) -> None:
@@ -18,19 +16,21 @@ class Islands:
         except Exception as e:
             print(e)
 
-    def get_island(self, seed: int):
+    def get_seeds(self):
         try:
             table = self.__db.Table('Islands')
-            response = table.get_item(Key={'seed': seed})
-            return response['Item']
+            response = table.scan(AttributesToGet=['seed'])
+            return response['Items']
         except ClientError as e:
             print(e.response['Error']['Message'])
         except Exception as e:
             print(e)
 
-    def get_random(self):
+    def get_island(self, seed: int):
         try:
-            return True  # TODO implement
+            table = self.__db.Table('Islands')
+            response = table.get_item(Key={'seed': seed})
+            return response['Item']
         except ClientError as e:
             print(e.response['Error']['Message'])
         except Exception as e:

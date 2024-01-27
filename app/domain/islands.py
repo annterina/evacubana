@@ -9,11 +9,12 @@ class Islands:
     def get_all(self):
         return self.__repository.get_all()
 
+    def get_seeds(self):
+        seeds = self.__repository.get_seeds()
+        return [int(seed['seed']) for seed in seeds]
+
     def get_island(self, seed: int):
         return self.__repository.get_island(seed)
-
-    def get_random(self):
-        return self.__repository.get_random()
 
     def create_island(self, island: Island):
         return self.__repository.create_island(island.model_dump())
