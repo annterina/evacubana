@@ -8,7 +8,7 @@ from app.repository.islands import Islands as IslandsRepository
 from app.router.games import GamesRouter
 from app.router.islands import IslandsRouter
 
-app = FastAPI()
+app = FastAPI(debug=True)
 
 db = initialize_db()
 games_repository = GamesRepository(db)
