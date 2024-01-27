@@ -20,7 +20,7 @@ class Islands:
     def get_seeds(self):
         try:
             table = self.__db.Table('Islands')
-            response = table.scan(AttributesToGet=['seed'],
+            response = table.scan(ProjectionExpression='seed',
                                   FilterExpression=Attr('playable').eq(True))
             return response['Items']
         except ClientError as e:
