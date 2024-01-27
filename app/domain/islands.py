@@ -10,7 +10,7 @@ class Islands:
         return self.__repository.get_all()
 
     def get_seeds(self):
-        seeds = self.__repository.get_seeds()
+        seeds = self.__repository.get_seeds() or []
         return [int(seed['seed']) for seed in seeds]
 
     def get_island(self, seed: int):

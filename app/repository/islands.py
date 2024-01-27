@@ -1,3 +1,4 @@
+from boto3.dynamodb.conditions import Attr
 from botocore.exceptions import ClientError
 from boto3.resources.base import ServiceResource
 
@@ -19,7 +20,8 @@ class Islands:
     def get_seeds(self):
         try:
             table = self.__db.Table('Islands')
-            response = table.scan(AttributesToGet=['seed'])
+            response = table.scan(AttributesToGet=['seed'],
+                                  FilterExpression=Attr('playable').eq(True))
             return response['Items']
         except ClientError as e:
             print(e.response['Error']['Message'])
@@ -53,11 +55,13 @@ class Islands:
             UpdateExpression="""
                 set
                     notes=:notes,
-                    top_scores=:top_scores
+                    top_scores=:top_scores,
+                    playable=:playable
             """,
             ExpressionAttributeValues={
                 ':notes': island.get('notes'),
-                ':top_scores': island.get('top_scores')
+                ':top_scores': island.get('top_scores'),
+                ':playable': island.get('playable')
             },
             ReturnValues="UPDATED_NEW"
         )
