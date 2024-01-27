@@ -24,4 +24,4 @@ RUN pip install pycurl
 
 COPY app/. /code/app
 
-CMD ["celery", "--app", "app.worker.task.app", "worker", "--concurrency", "1"]
+CMD ["celery", "--app", "app.worker.task.app", "worker", "--concurrency", "1", "-B"]
