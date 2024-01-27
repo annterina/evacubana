@@ -1,7 +1,7 @@
 from app.domain.islands import Islands
 from app.domain.models.game import Game
 
-MAX_ISLAND_NOTES = 80
+MAX_ISLAND_NOTES = 5
 
 
 def update_island_from_game(islands: Islands, game: Game):

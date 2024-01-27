@@ -3,7 +3,7 @@ from fastapi import APIRouter, BackgroundTasks
 from app.domain.games import Games
 from app.domain.islands import Islands
 from app.domain.models.game import Game
-from app.service.process_islands import update_island_from_game
+from app.service.islands_service import update_island_from_game
 
 
 class GamesRouter:
