@@ -10,7 +10,7 @@ from app.domain.models.score import Score
 
 
 def island_seed():
-    return random.randint(0, sys.maxsize)
+    return random.randint(0, 1_000_000)
 
 
 class Island(BaseModel):
