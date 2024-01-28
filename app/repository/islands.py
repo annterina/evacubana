@@ -37,6 +37,7 @@ class Islands:
             print(e.response['Error']['Message'])
         except Exception as e:
             print(f'Error getting seeds, {e}')
+            raise e
 
     def get_island(self, seed: int):
         try:
@@ -47,6 +48,7 @@ class Islands:
             print(e.response['Error']['Message'])
         except Exception as e:
             print(f'Error getting island, {e}')
+            raise e
 
     def create_island(self, island: dict):
         try:
